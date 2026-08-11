@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jesús Ignacio Briceño Alarcón · JIBA</title>
+<meta name="description" content="Justicia, cooperación al desarrollo e inteligencia artificial. Todos mis enlaces en un solo lugar.">
+<meta property="og:title" content="Jesús Ignacio Briceño Alarcón · JIBA">
+<meta property="og:description" content="Justicia, cooperación al desarrollo e inteligencia artificial para el sector social.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --navy:#16283F;
+    --azul-medio:#2E4F73;
+    --azul-cielo:#7FA8C9;
+    --slate:#B9C7D4;
+    --black:#0D0D10;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    font-family:'DM Sans', sans-serif;
+    color:var(--white);
+    background: linear-gradient(160deg, var(--navy) 0%, var(--azul-medio) 55%, var(--azul-cielo) 130%);
+    position:relative;
+    overflow-x:hidden;
+    display:flex;
+    justify-content:center;
+    padding:32px 18px 48px;
+  }
+
+  .container{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:460px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .lang-toggle{
+    align-self:flex-end;
+    display:flex;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.22);
+    border-radius:999px;
+    padding:4px;
+    margin-bottom:28px;
+    backdrop-filter:blur(8px);
+  }
+  .lang-toggle button{
+    border:none;
+    background:transparent;
+    font-family:'DM Sans',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--slate);
+    padding:6px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .25s ease;
+  }
+  .lang-toggle button.active{
+    background:var(--white);
+    color:var(--navy);
+  }
+
+  .avatar-ring{
+    width:112px;height:112px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--white);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.25), 0 14px 32px -8px rgba(0,0,0,0.45);
+    margin-bottom:20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .avatar-ring::before{
+    content:"";
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
+    border:1.5px solid rgba(255,255,255,0.5);
+    opacity:0.8;
+  }
+  .avatar-ring .photo{
+    width:100%;height:100%;
+    background-image:url("/profile.jpg");
+    background-size:cover;background-repeat:no-repeat;background-position:center;
+    border-radius:50%;
+  }
+
+  .name{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:28px;
+    line-height:1.2;
+    margin:0 0 4px;
+    color:var(--white);
+  }
+  .tagline{
+    font-size:14.5px;
+    line-height:1.55;
+    color:var(--slate);
+    max-width:380px;
+    margin:0 0 30px;
+  }
+
+  .links{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-bottom:32px;
+  }
+  .link-btn{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    padding:16px 20px;
+    background:rgba(255,255,255,0.09);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:18px;
+    backdrop-filter:blur(10px);
+    text-decoration:none;
+    color:var(--white);
+    font-weight:600;
+    font-size:15.5px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .link-btn:hover, .link-btn:active{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px -12px rgba(0,0,0,0.45);
+    background:rgba(255,255,255,0.16);
+  }
+  .link-btn .icon{
+    flex:0 0 auto;
+    width:38px;height:38px;
+    border-radius:12px;
+    background:var(--white);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .link-btn .icon svg{width:19px;height:19px;stroke:var(--navy);}
+  .link-btn .label{flex:1;text-align:left;}
+  .link-btn .sub{
+    display:block;
+    font-family:'DM Sans',sans-serif;
+    font-weight:400;
+    font-size:12px;
+    color:var(--slate);
+    margin-top:2px;
+  }
+  .badge{
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    color:var(--navy);
+    background:var(--white);
+    padding:3px 9px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  .social-row{
+    display:flex;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .social-row a{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.22);
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .social-row a:hover{
+    background:rgba(255,255,255,0.22);
+    transform:translateY(-2px);
+  }
+  .social-row svg{width:19px;height:19px;stroke:var(--white);}
+
+  footer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    color:var(--slate);
+  }
+  .footer-logo{
+    width:32px;height:32px;
+    border-radius:50%;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--white);
+    margin-bottom:2px;
+  }
+  .footer-logo .logo-mark{
+    width:78%;height:78%;
+    background-image:url("/logo.png");
+    background-size:contain;background-repeat:no-repeat;background-position:center;
+  }
+  .copyright{font-size:11px;color:var(--slate);opacity:0.85;}
+
+  @media (max-width:380px){
+    .name{font-size:24px;}
+    .link-btn{padding:14px 16px;font-size:14.5px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="lang-toggle">
+    <button data-set-lang="es" class="active">ES</button>
+    <button data-set-lang="en">EN</button>
+  </div>
+
+  <div class="avatar-ring">
+    <div class="photo"></div>
+  </div>
+
+  <h1 class="name">Jesús Ignacio Briceño Alarcón</h1>
+
+  <p class="tagline"
+     data-es="Combino justicia, cooperación al desarrollo e inteligencia artificial para ayudar a organizaciones y personas del sector social a convertir problemas complejos en resultados reales, con rigor, ética e impacto social."
+     data-en="I combine law, international development cooperation and artificial intelligence to help social-sector organizations and people turn complex problems into real results, with rigor, ethics and social impact.">
+    Combino justicia, cooperación al desarrollo e inteligencia artificial para ayudar a organizaciones y personas del sector social a convertir problemas complejos en resultados reales, con rigor, ética e impacto social.
+  </p>
+
+  <div class="links">
+
+    <!-- Sitio web -->
+    <a class="link-btn" target="_blank" rel="noopener"
+       href="https://ignaciobriceno.com/?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=sitio_web">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
+      </span>
+      <span class="label">
+        <span data-es="Sitio web" data-en="Website">Sitio web</span>
+        <span class="sub" data-es="Blog, artículos y perspectivas" data-en="Blog, articles and perspectives">Blog, artículos y perspectivas</span>
+      </span>
+    </a>
+
+    <!-- Consultoría -->
+    <a class="link-btn" target="_blank" rel="noopener"
+       href="https://ignaciobriceno.com/consultoria?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=consultoria">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+      </span>
+      <span class="label">
+        <span data-es="Consultoría" data-en="Consulting">Consultoría</span>
+        <span class="sub" data-es="Acompañamiento en IA para el sector social" data-en="AI advisory for the social sector">Acompañamiento en IA para el sector social</span>
+      </span>
+    </a>
+
+    <!-- Recursos gratuitos -->
+    <a class="link-btn" target="_blank" rel="noopener"
+       href="https://ignaciobriceno.com/recursos?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=recursos">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </span>
+      <span class="label">
+        <span data-es="Recursos gratuitos" data-en="Free resources">Recursos gratuitos</span>
+        <span class="sub" data-es="Checklist, kit y guías de IA ética" data-en="Checklist, kit and ethical-AI guides">Checklist, kit y guías de IA ética</span>
+      </span>
+    </a>
+
+    <!-- Newsletter -->
+    <a class="link-btn" target="_blank" rel="noopener"
+       href="https://ignaciobriceno.com/newsletter?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=newsletter">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+      </span>
+      <span class="label">
+        <span data-es="Newsletter Brújula Social" data-en="Brújula Social Newsletter">Newsletter Brújula Social</span>
+        <span class="sub" data-es="Semanal · herramientas, recursos y tendencias en IA" data-en="Weekly · AI tools, resources and trends">Semanal · herramientas, recursos y tendencias en IA</span>
+      </span>
+    </a>
+
+    <!-- EcoTerras -->
+    <a class="link-btn" target="_blank" rel="noopener"
+       href="https://www.instagram.com/ecoterrassostenible/?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=ecoterras">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </span>
+      <span class="label">
+        <span data-es="EcoTerras" data-en="EcoTerras">EcoTerras</span>
+        <span class="sub" data-es="Sostenibilidad práctica" data-en="Practical sustainability">Sostenibilidad práctica</span>
+      </span>
+      <span class="badge" data-es="Próximamente" data-en="Coming soon">Próximamente</span>
+    </a>
+
+  </div>
+
+  <div class="social-row">
+    <a href="https://www.instagram.com/ignaciobricenoa/?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=social_instagram" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/ignaciobricenoalarcon/?utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=social_linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v1.7A5 5 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61588721271507&utm_source=instagram&utm_medium=linkinbio&utm_campaign=bio&utm_content=social_facebook" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+        <div class="logo-mark"></div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Jesús Ignacio Briceño Alarcón · JIBA</p>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var STORAGE_KEY = 'jiba_links_lang';
+    var buttons = document.querySelectorAll('[data-set-lang]');
+    var textNodes = document.querySelectorAll('[data-es][data-en]');
+
+    function applyLang(lang){
+      document.documentElement.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      textNodes.forEach(function(el){
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      buttons.forEach(function(btn){
+        btn.classList.toggle('active', btn.getAttribute('data-set-lang') === lang);
+      });
+      try{ localStorage.setItem(STORAGE_KEY, lang); }catch(e){}
+    }
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        applyLang(btn.getAttribute('data-set-lang'));
+      });
+    });
+
+    var saved = null;
+    try{ saved = localStorage.getItem(STORAGE_KEY); }catch(e){}
+    if(saved === 'en'){ applyLang('en'); }
+  })();
+</script>
+
+</body>
+</html>
